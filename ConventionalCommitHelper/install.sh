@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Ustawienia
-REPO="xeno178531/"
+REPO="Xeno178531/ccommit"
 INSTALL_DIR="/usr/local/bin"
-BINARY_NAME="moja-komenda"
+BINARY_NAME="ccommit"
 
 echo "Pobieranie najnowszej wersji $BINARY_NAME..."
 
 # Pobranie najnowszego pliku wykonywalnego z GitHub Releases
-URL=$(curl -s https://api.github.com/repos/$REPO/releases/latest | grep "browser_download_url" | cut -d '"' -f 4)
+URL=$(curl -s https://api.github.com/repos/$REPO/releases/latest | grep "browser_download_url" | grep "$BINARY_NAME\"" | cut -d '"' -f 4)
 
 # Pobranie pliku do katalogu tymczasowego
 curl -L -o /tmp/$BINARY_NAME "$URL"
